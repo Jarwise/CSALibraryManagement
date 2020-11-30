@@ -1,21 +1,28 @@
 public class Book {
-    private String name = "Untitled";
+    private String title = "Untitled";
     private String author = "Unknown";
-    private int numberOfPages = 0;
+    private int ID;
+    private String ISBN;
     private boolean borrowed = false;
+    private Reader borrower;
     private int readTime = 14; //days
     private Date dateBorrowed;
+    private Date dateExpeceted;
 
     //constructor
-    public Book(){}
-    public Book(String name){this.name = name;}
+    public Book(String name){
+        this.title = name;
+        //ID is generated when added to library
+        this.ISBN = isbn();
+    }
     public Book(String name, String author){
-        this.name = name;
+        this.title = name;
         this.author = author;
+        this.ISBN = isbn();
     }
 
     public String toString(){
-        return(this.name);
+        return(this.title);
     }
     public boolean free(){
         return(!this.borrowed);
