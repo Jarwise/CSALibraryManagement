@@ -1,49 +1,25 @@
 import java.util.ArrayList;
+
 public class Reader {
     private ArrayList listOfBooks = new ArrayList(0);
     private String name = "Anonymous";
-    private int closedFines = 0, fines = 0;
-    private int BOOKFINE = 10; // constant fine for the delayed returning of one book 
-
+    private String email;
+    private int id;
+    private static ArrayList<Integer> ids = new ArrayList<Integer>();
+    
     //constructor
-    public Reader(String name){
+    public Reader(String name, String email){
         this.name = name;
-    }
+        this.email = email;
+        boolean newid = false;
 
-    public String toString(){return(this.name);}
-    public void borrowBook(Book book, Date date){
-        if(book.free()){
-            this.listOfBooks.add(book);
-            book.borrow(date);
-        }
-        else System.out.println("Requested book is not available at the moment");
-    }
-    public void returnBook(String name, ArrayList Library){
-        for(int i = 0; i < this.listOfBooks.size(); i++){
-            if(this.listOfBooks.get(i).name.equals(name)){
-                Book book = this.listOfBooks.get(i);
-                book.returnBook();
-                Library.add(book);
-                this.listOfBooks.remove(i);
-                break;
+        while(newid = false){
+            int generateid = 1 + (int)(Math.random()*9999);
+            if(!(ids.contains(generateid))){
+                ids.add(generateid);
+                this.id = generateid;
+                newid = true;
             }
         }
     }
-    public void getListOfBooks(){
-        System.out.println(this.name+":");
-        for(int i = 0; i < this.listOfBooks.size(); i++){
-            System.out.println(listOfBooks.get(i).toString());
-        }
-    }
-    public int checkFines(Date today){
-        this.fines = this.closedFines;
-        for(int i = 0; i < this.listOfBooks.size(); i++){
-            Book book = listOfBooks.get(i);
-            if(compareDate(today, book.dateBorrowed().add(book.getReadTime()))){
-                this.fines += BOOKFINE; // can be replaces with fine per day of delay
-            }
-        }
-        return(this.fines);
-    }
-
 }
