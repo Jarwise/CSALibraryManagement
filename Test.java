@@ -9,10 +9,12 @@ public class Test {
         Biblioteka.addBook(book2);
         Reader reader1 = new Reader("Fery");
         Reader reader2 = new Reader("Jozo");
+        Biblioteka.addReader(reader1);
+        Biblioteka.addReader(reader2);
         Biblioteka.setDate(5, 5, 2020);
         System.out.print(Biblioteka.toString());
 
-        //Task 2
+        /*/Task 2
         System.out.println(book1.toString());
         System.out.println(book2.toString());
         reader1.borrowBook(book1, date);
@@ -37,7 +39,7 @@ public class Test {
         //Task 4
         reader2.returnBook("GOT", Library);
         System.out.println(reader1.toString()+": "+reader1.checkFines(date));
-        System.out.println(reader2.toString()+": "+reader2.checkFines(date));
+        System.out.println(reader2.toString()+": "+reader2.checkFines(date));*/
 
     }
 }

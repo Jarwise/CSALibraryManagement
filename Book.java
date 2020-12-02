@@ -2,7 +2,7 @@ public class Book {
     private String title = "Untitled";
     private String author = "Unknown";
     private int ID = 1;
-    private String ISBN;
+    private String ISBNq;
     private boolean borrowed = false;
     private Reader borrower;
     private int readTime = 14; //days
@@ -12,21 +12,22 @@ public class Book {
     //constructor
     public Book(String name){
         this.title = name;
-        this.ISBN = isbn();
+        this.ISBNq = ISBN.isbn();
     }
     public Book(int ID, String name){
         this.title = name;
         this.ID = ID;
-        this.ISBN = isbn();
+        this.ISBNq = ISBN.isbn();
     }
     public Book(int ID, String name, String ISBN){
         this.ID = ID;
         this.title = name;
-        this.ISBN = ISBN;
+        this.ISBNq = ISBN;
     }
 
     public String toString(){
-        return(this.title);
+        String str = this.title + " " + this.ISBNq + " " + this.ID;
+        return(str);
     }
     public boolean free(){
         return(!this.borrowed);
