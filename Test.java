@@ -2,17 +2,15 @@ import java.util.ArrayList;
 public class Test {
     public static void main(String[] args){
         //Task 1
-        ArrayList Library = new ArrayList();
-        Book book1 = new Book("Harry Potter", "JFK");
-        Book book2 = new Book("GOT");
-        Library.add(book1);
-        Library.add(book2);
+        Library Biblioteka = new Library("Biblioteka");
+        Book book1 = new Book(8, "Harry Potter");
+        Book book2 = new Book(9, "GOT");
+        Biblioteka.addBook(book1);
+        Biblioteka.addBook(book2);
         Reader reader1 = new Reader("Fery");
         Reader reader2 = new Reader("Jozo");
-        Date date = new Date(5, 5, 2020);
-        for(int i = 0; i < Library.size(); i++){
-            System.out.println(Library.get(i).toString());
-        }
+        Biblioteka.setDate(5, 5, 2020);
+        System.out.print(Biblioteka.toString());
 
         //Task 2
         System.out.println(book1.toString());

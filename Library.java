@@ -40,7 +40,6 @@ public class Library{
         this.readers.add(reader);
     }
     public void addBook(Book book){
-        book.setID(this.books.size());
         this.books.add(book);
     }
     public void checkReaders(){
@@ -50,5 +49,16 @@ public class Library{
     }
     public int checkFines(Date returned, Date expected){
 
+    }
+    public String toString(){
+        String str = "Books: \n";
+        for(int i = 0; i < this.books.size(); i++){
+            str = str + this.books.get(i).toString() + "\n";
+        }
+        str = str + "Readers: \n";
+        for(int i = 0; i < this.readers.size(); i++){
+            str = str + this.readers.get(i).toString() + "\n";
+        }
+        return(str);
     }
 }
