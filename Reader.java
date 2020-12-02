@@ -21,4 +21,7 @@ public class Reader {
             }
         }
     }
+    public String toString(){
+        return this.name;
+    }
 }
