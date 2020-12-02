@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 public class Library{
     private String name = "Untitled Library";
-    private ArrayList books = new ArrayList();
-    private ArrayList readers = new ArrayList();
+    private ArrayList<Book> books = new ArrayList<>();
+    private ArrayList<Reader> readers = new ArrayList<>();
     private Date today = new Date(1, 1, 2000);
 
     public Library(){}
@@ -23,7 +23,6 @@ public class Library{
         for(int i = 0; i < this.books.size(); i++){
             if(this.books.get(i).toString().equals(name)){
                 return(this.books.get(i));
-                break;
             }
         }
         return(null);
@@ -32,7 +31,6 @@ public class Library{
         for(int i = 0; i < this.books.size(); i++){
             if(this.books.get(i).getID() == bookID){
                 return(this.books.get(i));
-                break;
             }
         }
         return(null);
@@ -45,7 +43,7 @@ public class Library{
     }
     public void checkReaders(){
         for(int i = 0; i < this.readers.size(); i++){
-            System.out.println(this.readers.get(i).toString()+": "+this.readers.get(i).checkFines(this.today));
+            System.out.println(this.readers.get(i).toString()+": "+this.readers.get(i).checkMyFines(this));
         }
     }
     static int checkFines(Date returned, Date expected){           //the original function proposed by Dusan
@@ -61,13 +59,18 @@ public class Library{
         }
         return(-2);
     }
-    public int checkFinesReally(Book book){                      //imporved function updated to refer to a specific book
-        if(book.free()){ System.out.println("This book is not in anyone's possesion"); return(-1);}
+    public void checkFinesReally(){                      //improved function updated to refer to a specific book
+        Reader reader = new Reader();
+        for(int i = 0; i < this.readers.size(); i++){
+            reader = this.readers.get(i);
+            System.out.println(reader.toString()+": "+reader.checkMyFines(this)); 
+        }
+        /*if(book.free()){ System.out.println("This book is not in anyone's possesion"); return(-1);}
         else{
             int x = Library.checkFines(today, book.dateBorrowed().add(book.getReadTime()));
             if(x == 0){ System.out.println("There is no fine assigned to this book yet, book is borrowed by "+book.getBorrower()); return(-1);}
             else { System.out.println("book "+book.toString()+" is fined "+x+" coins to "+book.getBorrower()); return(x);}
-        }
+        }*/
     }
     public String toString(){
         String str = this.name + "\nBooks: \n";
@@ -80,5 +83,8 @@ public class Library{
         }
         str = str + "Date: \n" + today.toString();
         return(str);
+    }
+    public ArrayList<Book> getBooks(){ //this function was added anly for checking fines in reader.checkMyFines()
+        return(this.books);
     }
 }

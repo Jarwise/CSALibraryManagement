@@ -21,26 +21,21 @@ public class Test {
         book1.borrow(reader1, today); //these two lines will print out errors as the books are already borrowed
         book2.borrow(reader1, today);
         System.out.print("\n");
-        System.out.println(book1.toString()+": "+Biblioteka.checkFinesReally(book1));
+        Biblioteka.checkFinesReally();
         System.out.print("\n");
-        System.out.println(book2.toString()+": "+Biblioteka.checkFinesReally(book2));
         Biblioteka.setDate(5, 6, 2020);
 
         //Task 3
-        book1.returnBook();
-        System.out.print("\n");
-        System.out.println(book1.toString()+": "+Biblioteka.checkFinesReally(book1));
-        System.out.print("\n");
-        System.out.println(book2.toString()+": "+Biblioteka.checkFinesReally(book2));
+        today = Biblioteka.getDate();
+        book1.returnBook(today);
+        Biblioteka.checkFinesReally();
         System.out.print("\n");
         Biblioteka.setDate(6, 7, 2020);
         System.out.print(Biblioteka.toString() + "\n");
 
         //Task 4
-        book2.returnBook();
-        System.out.print("\n");
-        System.out.println(book1.toString()+": "+Biblioteka.checkFinesReally(book1));
-        System.out.print("\n");
-        System.out.println(book2.toString()+": "+Biblioteka.checkFinesReally(book2));
+        today = Biblioteka.getDate();
+        book2.returnBook(today);
+        Biblioteka.checkFinesReally();
     }
 }

@@ -5,6 +5,7 @@ public class Reader {
     private String email = "-";
     private int id;
     private static ArrayList<Integer> ids = new ArrayList<Integer>();
+    private int Fines = 0;
     
     //constructor
     public Reader(){
@@ -34,5 +35,20 @@ public class Reader {
     }
     public String toString(){
         return(this.name);
+    }
+    public int checkMyFines(Library library){
+        int fines = this.Fines;
+        Book book  = new Book("temp");
+        for(int i = 0; i < library.getBooks().size(); i++){
+            book = library.getBooks().get(i);
+            
+            if(book.getBorrower().equals(this.name)){
+                fines += Library.checkFines(library.getDate(), book.dateExpected());
+            }
+        }
+        return(fines);
+    }
+    public void addFines(int x){
+        this.Fines += x;
     }
 }

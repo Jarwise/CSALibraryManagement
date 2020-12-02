@@ -10,7 +10,7 @@ public class Date {
         this.year = year;
     }
 
-    public Date add(int x){
+    public Date add(int x){  // adding days to Date is usefull for calculating the expected return date for a book
         this.day += x;
         while(this.day > 30){ this.day-=30; this.month+=1;}
         while(this.month > 12){ this.month-=12; this.year+=1;}
@@ -21,18 +21,12 @@ public class Date {
         this.month = month;
         this.year = year;
     }
-    public void set(int day, int month){
+    public void set(int day, int month){ //two options for setting a date
         this.day = day;
         this.month = month;
     }
     public String toString(){
         return(this.day+" "+this.month+" "+this.year+"\n");
-    }
-    static boolean compareDate(Date bigger, Date smaller){
-        long B = bigger.year * 365 + bigger.month * 12 + bigger.day;
-        long S = smaller.year * 365 + smaller.month * 12 + smaller.day;
-        if(B > S) return(true);
-        else return(false);
     }
     public int getDay(){
         return(this.day);
