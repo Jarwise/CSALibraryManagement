@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Reader {
     private String name = "Anonymous";
-    private String email;
+    private String email = "email@email.com";
     private int id;
     private static ArrayList<Integer> ids = new ArrayList<Integer>();
     
