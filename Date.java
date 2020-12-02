@@ -34,4 +34,13 @@ public class Date {
         if(B > S) return(true);
         else return(false);
     }
+    public int getDay(){
+        return this.day;
+    }
+    public int getMonth(){
+        return this.month;
+    }
+    public int getYear(){
+        return this.year;
+    }
 }
