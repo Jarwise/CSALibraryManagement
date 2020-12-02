@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class Reader {
-    private ArrayList listOfBooks = new ArrayList(0);
     private String name = "Anonymous";
     private String email;
     private int id;
@@ -21,5 +20,8 @@ public class Reader {
                 newid = true;
             }
         }
+    }
+    public String toString(){
+        return this.name;
     }
 }
