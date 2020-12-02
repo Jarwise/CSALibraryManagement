@@ -48,18 +48,37 @@ public class Library{
             System.out.println(this.readers.get(i).toString()+": "+this.readers.get(i).checkFines(this.today));
         }
     }
-    public int checkFines(Date returned, Date expected){
-
+    static int checkFines(Date returned, Date expected){           //the original function proposed by Dusan
+        if(returned.getYear() > expected.getYear()) return(10000);
+        if(returned.getYear() < expected.getYear()) return(0);
+        if(returned.getYear() == expected.getYear()){
+            if(returned.getMonth() > expected.getMonth()) return(500*(returned.getMonth() - expected.getMonth()));
+            if(returned.getMonth() < expected.getMonth()) return(0);
+            if(returned.getMonth() == expected.getMonth()){
+                if(returned.getDay() > expected.getDay()) return(15*(returned.getDay() - expected.getDay()));
+                if(returned.getDay() <= expected.getDay()) return(0);
+            }
+        }
+        return(-2);
+    }
+    public int checkFinesReally(Book book){                      //imporved function updated to refer to a specific book
+        if(book.free()){ System.out.println("This book is not in anyone's possesion"); return(-1);}
+        else{
+            int x = Library.checkFines(today, book.dateBorrowed().add(book.getReadTime()));
+            if(x == 0){ System.out.println("There is no fine assigned to this book yet, book is borrowed by "+book.getBorrower()); return(-1);}
+            else { System.out.println("book "+book.toString()+" is fined "+x+" coins to "+book.getBorrower()); return(x);}
+        }
     }
     public String toString(){
-        String str = "Books: \n";
+        String str = this.name + "\nBooks: \n";
         for(int i = 0; i < this.books.size(); i++){
-            str = str + this.books.get(i).toString() + "\n";
+            str = str + " " + this.books.get(i).toString() + "\n";
         }
         str = str + "Readers: \n";
         for(int i = 0; i < this.readers.size(); i++){
-            str = str + this.readers.get(i).toString() + "\n";
+            str = str + " " + this.readers.get(i).toString() + "\n";
         }
+        str = str + "Date: \n" + today.toString();
         return(str);
     }
 }

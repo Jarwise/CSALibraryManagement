@@ -26,7 +26,7 @@ public class Book {
     }
 
     public String toString(){
-        String str = this.title + " " + this.ISBNq + " " + this.ID;
+        String str = this.title;// + " " + this.ISBNq + " " + this.ID;
         return(str);
     }
     public boolean free(){
@@ -35,14 +35,19 @@ public class Book {
     public int getID(){
         return(this.ID);
     }
-    public void borrow(Date date){
-        this.borrowed = true;
-        this.dateBorrowed = date;
-        this.dateExpected = this.dateBorrowed.add(this.readTime);
+    public void borrow(Reader reader, Date date){
+        if(this.free()){
+            this.borrowed = true;
+            this.dateBorrowed = date;
+            this.dateExpected = this.dateBorrowed.add(this.readTime);
+            this.borrower = reader;
+        }
+        else System.out.println("This book is currently unavailable");
     }
     public void returnBook(){
         this.borrowed = false;
         this.dateExpected = null;
+        this.borrower = null;
     }
     public void setReadTime(int readTime){
         this.readTime = readTime;
@@ -52,5 +57,8 @@ public class Book {
     }
     public Date dateBorrowed(){
         return(this.dateBorrowed);
+    }
+    public String getBorrower(){
+        return(this.borrower.toString());
     }
 }

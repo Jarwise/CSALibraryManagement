@@ -35,12 +35,12 @@ public class Date {
         else return(false);
     }
     public int getDay(){
-        return this.day;
+        return(this.day);
     }
     public int getMonth(){
-        return this.month;
+        return(this.month);
     }
     public int getYear(){
-        return this.year;
+        return(this.year);
     }
 }

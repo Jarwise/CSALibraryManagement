@@ -33,6 +33,6 @@ public class Reader {
         return generateid;
     }
     public String toString(){
-        return this.name;
+        return(this.name);
     }
 }
