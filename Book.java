@@ -57,9 +57,6 @@ public class Book {
     public int getReadTime(){
         return(this.readTime);
     }
-    //public Date dateBorrowed(){
-     //   return(this.dateBorrowed);
-   // }
     public Date dateExpected(){
         return(this.dateExpected);
     }
