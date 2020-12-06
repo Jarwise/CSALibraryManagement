@@ -18,7 +18,7 @@ public class Test {
         Date today = new Date(); today = Biblioteka.getDate();
         book1.borrow(reader1, today); //borrowing book1 to reader1 and book2 to reader2
         book2.borrow(reader2, today);
-        book1.borrow(reader1, today); //these two lines will print out errors as the books are already borrowed
+        book1.borrow(reader2, today); //these two lines will print out errors as the books are already borrowed
         book2.borrow(reader1, today);
         System.out.print("\n");
         Biblioteka.checkFinesReally();
@@ -27,6 +27,7 @@ public class Test {
 
         //Task 3
         today = Biblioteka.getDate();
+        System.out.println("Date:\n" + today.toString());
         book1.returnBook(today);
         Biblioteka.checkFinesReally();
         System.out.print("\n");

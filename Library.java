@@ -61,21 +61,18 @@ public class Library{
     }
     public void checkFinesReally(){                      //improved function updated to refer to a specific book
         Reader reader = new Reader();
+        Library lib = new Library("temp"); lib = this;
         for(int i = 0; i < this.readers.size(); i++){
             reader = this.readers.get(i);
-            System.out.println(reader.toString()+": "+reader.checkMyFines(this)); 
+            System.out.println(reader.toString()+"'s fines: "+reader.checkMyFines(lib)); 
         }
-        /*if(book.free()){ System.out.println("This book is not in anyone's possesion"); return(-1);}
-        else{
-            int x = Library.checkFines(today, book.dateBorrowed().add(book.getReadTime()));
-            if(x == 0){ System.out.println("There is no fine assigned to this book yet, book is borrowed by "+book.getBorrower()); return(-1);}
-            else { System.out.println("book "+book.toString()+" is fined "+x+" coins to "+book.getBorrower()); return(x);}
-        }*/
     }
     public String toString(){
-        String str = this.name + "\nBooks: \n";
+        String str = " == " + this.name + " == " + "\nBooks: \n";
         for(int i = 0; i < this.books.size(); i++){
-            str = str + " " + this.books.get(i).toString() + "\n";
+            str = str + " " + this.books.get(i).toString();
+            if(this.books.get(i).free()) str = str + " (free)\n";
+            else str = str + " (borrowed)\n";
         }
         str = str + "Readers: \n";
         for(int i = 0; i < this.readers.size(); i++){

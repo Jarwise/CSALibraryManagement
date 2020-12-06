@@ -11,10 +11,11 @@ public class Date {
     }
 
     public Date add(int x){  // adding days to Date is usefull for calculating the expected return date for a book
-        this.day += x;
-        while(this.day > 30){ this.day-=30; this.month+=1;}
-        while(this.month > 12){ this.month-=12; this.year+=1;}
-        return(this);
+        Date add = new Date(this.day, this.month, this.year);
+        add.day += x;
+        while(add.day > 30){ add.day-=30; add.month+=1;}
+        while(add.month > 12){ add.month-=12; add.year+=1;}
+        return(add);
     }
     public void set(int day, int month, int year){
         this.day = day;

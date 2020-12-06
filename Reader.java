@@ -41,7 +41,6 @@ public class Reader {
         Book book  = new Book("temp");
         for(int i = 0; i < library.getBooks().size(); i++){
             book = library.getBooks().get(i);
-            
             if(book.getBorrower().equals(this.name)){
                 fines += Library.checkFines(library.getDate(), book.dateExpected());
             }

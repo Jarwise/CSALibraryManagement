@@ -41,15 +41,17 @@ public class Book {
             this.dateBorrowed = date;
             this.dateExpected = this.dateBorrowed.add(this.readTime);
             this.borrower = reader;
+            System.out.println(this.toString()+" was borrowed to "+reader.toString());
         }
         else System.out.println("This book is currently unavailable");
     }
     public void returnBook(Date today){   // couldn't use book.return() because this keyword is already in use :D
-        this.borrower.addFines(Library.checkFines(today, this.dateBorrowed.add(this.readTime)));
+        this.borrower.addFines(Library.checkFines(today, this.dateExpected));
         this.borrowed = false;
         this.dateBorrowed = null;
         this.dateExpected = null;
         this.borrower = null;
+        System.out.println(this.toString()+" was returned to Library");
     }
     public void setReadTime(int readTime){
         this.readTime = readTime;
